@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Will you marry me?</title>
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:Arial;
+background: linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3a0);
+background-size:400% 400%;
+animation: gradient 10s ease infinite;
+color:white;
+overflow:hidden;
+}
+
+@keyframes gradient{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+h1{
+font-size:45px;
+text-shadow:2px 2px 10px rgba(0,0,0,0.3);
+animation: fade 2s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(-30px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+.buttons{
+margin-top:30px;
+}
+
+button{
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:30px;
+margin:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+#yes{
+background:#00ffb7;
+color:black;
+}
+
+#yes:hover{
+transform:scale(1.1);
+}
+
+#no{
+background:#ff4b5c;
+color:white;
+position:relative;
+}
+
+#result{
+margin-top:30px;
+}
+
+iframe{
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* hearts */
+.heart{
+position:absolute;
+color:white;
+font-size:20px;
+animation: float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:1}
+100%{transform:translateY(-800px);opacity:0}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Will you marry me, Nefra? 💍</h1>
+
+<div class="buttons">
+<button id="yes">Yes</button>
+<button id="no">No</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+
+let noBtn = document.getElementById("no");
+let yesBtn = document.getElementById("yes");
+
+noBtn.addEventListener("click", () => {
+
+let x = Math.random()*window.innerWidth-100;
+let y = Math.random()*window.innerHeight-100;
+
+noBtn.style.position="absolute";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+document.getElementById("result").innerHTML=
+`<h2>Why bitch</h2>
+<iframe width="400" height="230"
+src="https://www.youtube.com/embed/YpKzQeusvkA?si=xMrPhDpz3YlZsWq9"
+allowfullscreen></iframe>`;
+
+});
+
+yesBtn.addEventListener("click", ()=>{
+
+document.body.innerHTML = `
+<h1>Love babe ❤️</h1>
+<iframe width="500" height="280"
+src="https://www.youtube.com/embed/waAS7I4k9wc?si=WVUkcrfnasnwSjb1"
+allowfullscreen></iframe>
+`;
+
+});
+
+/* floating hearts */
+setInterval(()=>{
+let heart = document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(10+Math.random()*30)+"px";
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+},500);
+
+</script>
+
+</body>
+</html>
